@@ -62,6 +62,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
+        echo "show";
         $post = Post::find($id);
 
         return view('posts.show')->withPost($post);
@@ -88,7 +89,21 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'body' => 'required'
+        ]);
+
+        $post = Post::find($id);
+
+        $post->title = $request->title;
+        $post->body = $request->body;
+
+        $post->save();
+
+        Session::flash('success', 'This post was successfully saved');
+
+        return redirect()->route('post.show', ['post' => $post->id]);
     }
 
     /**
