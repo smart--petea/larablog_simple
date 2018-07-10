@@ -18,3 +18,7 @@ Route::get('about', 'PagesController@getAbout');
 Route::get('contact', 'PagesController@getContact');
 
 Route::resource('post', 'PostController');
+
+//tutorial0710
+Route::get('tutorial0710', 'Tutorial0710Controller@formview');
+Route::post('tutorial0710', 'Tutorial0710Controller@processform')->name('tutorial0710.processform');
