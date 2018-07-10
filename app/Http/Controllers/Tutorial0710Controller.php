@@ -16,4 +16,14 @@ class Tutorial0710Controller extends Controller
             'email' => $request->email
         ]);
     }
+
+    function formviewguru99() {
+        return view('tutorial0710.formguru99');
+    }
+
+    function processformguru99(Request $request) {
+        return view('tutorial0710.processformguru99')->with([
+
+        ]);
+    }
 }
